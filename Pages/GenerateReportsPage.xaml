@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DocuManageUmad.Pages.GenerateReportsPage"
+             BackgroundColor="White">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- Encabezado -->
+        <HorizontalStackLayout HorizontalOptions="FillAndExpand">
+            <Label Text="Generar Reportes"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Black"/>
+            <ImageButton Source="search_icon.png"
+                         WidthRequest="24"
+                         HeightRequest="24"
+                         BackgroundColor="Transparent"
+                         Clicked="OnSearchClicked"/>
+        </HorizontalStackLayout>
+
+        <!-- Pestañas de estado -->
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button Text="To do"
+                    BackgroundColor="{Binding SelectedTab, Converter={StaticResource TabColorConverter}, ConverterParameter=ToDo}"
+                    TextColor="Black"
+                    Clicked="OnTabSelected"/>
+            <Button Text="En progreso"
+                    BackgroundColor="{Binding SelectedTab, Converter={StaticResource TabColorConverter}, ConverterParameter=InProgress}"
+                    TextColor="Black"
+                    Clicked="OnTabSelected"/>
+            <Button Text="Completado"
+                    BackgroundColor="{Binding SelectedTab, Converter={StaticResource TabColorConverter}, ConverterParameter=Completed}"
+                    TextColor="Black"
+                    Clicked="OnTabSelected"/>
+        </HorizontalStackLayout>
+
+        <!-- Vista vacía si no hay reportes -->
+        <VerticalStackLayout x:Name="EmptyState" IsVisible="True" HorizontalOptions="Center" Margin="50">
+            <Image Source="empty_state_icon.png" WidthRequest="100" HeightRequest="100"/>
+            <Label Text="No hay nada por ahora."
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+            <Label Text="Aquí encontrarás tus trámites completados."
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <!-- Lista de reportes cuando existan -->
+        <CollectionView x:Name="ReportsList" ItemsSource="{Binding Reports}" IsVisible="False">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeThickness="1"
+                            Stroke="LightGray"
+                            BackgroundColor="White"
+                            Padding="15"
+                            StrokeShape="RoundRectangle 10"
+                            Margin="5">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="report_icon.png" WidthRequest="40" HeightRequest="40"/>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="{Binding Date}" FontSize="14" TextColor="Gray"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Botón para generar un nuevo reporte -->
+        <Button Text="Crear Nuevo Reporte"
+                BackgroundColor="Blue"
+                TextColor="White"
+                CornerRadius="10"
+                Clicked="OnCreateReportClicked"
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                Margin="20"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

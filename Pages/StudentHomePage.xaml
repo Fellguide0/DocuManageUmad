@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DocuManageUmad.Pages.StudentHomePage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Encabezado -->
+            <Label Text="¡Bienvenido, Alumno!"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+            <Label Text="Gestiona tus documentos y expedientes de manera sencilla."
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"/>
+
+            <!-- Separador -->
+            <BoxView HeightRequest="2" Color="LightGray" Margin="0,10,0,10"/>
+
+            <!-- Sección de Acciones -->
+            <Label Text="Acciones"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+
+            <!-- Botón: Revisar Documentos -->
+            <Button Text="Revisar Documentos"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnReviewDocumentsClicked"
+                    HorizontalOptions="Fill"
+                    Padding="15"/>
+
+            <!-- Botón: Gestionar Expedientes -->
+            <Button Text="Gestionar Expedientes"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnManageExpedientsClicked"
+                    HorizontalOptions="Fill"
+                    Padding="15"/>
+
+            <!-- Botón: Generar Reportes -->
+            <Button Text="Generar Reportes"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnGenerateReportsClicked"
+                    HorizontalOptions="Fill"
+                    Padding="15"/>
+
+            <!-- Botón de Cerrar Sesión -->
+            <Button Text="Cerrar Sesión"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnLogoutClicked"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

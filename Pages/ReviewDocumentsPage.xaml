@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DocuManageUmad.Pages.ReviewDocumentsPage"
+             BackgroundColor="White">
+
+    
+    <Grid>
+        <!-- Contenido principal con scroll -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="10">
+
+                <!-- Encabezado -->
+                <Label Text="Revisar Documentos"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+
+                <Label Text="Documentos subidos al servidor."
+                       FontSize="14"
+                       TextColor="Gray"/>
+
+                <!-- Barra de búsqueda -->
+                <Border StrokeThickness="1"
+                        Stroke="LightGray"
+                        BackgroundColor="#F2F2F2"
+                        Padding="10"
+                        StrokeShape="RoundRectangle 10">
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="search_icon.png" WidthRequest="20" HeightRequest="20"/>
+                        <Entry x:Name="SearchEntry"
+                               Placeholder="Buscar documento"
+                               BackgroundColor="Transparent"
+                               TextColor="Black"
+                               PlaceholderColor="Gray"/>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Controles de Filtros y Ordenamiento -->
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Fill">
+                    <Button Text="⬇ Sort" BackgroundColor="LightGray" TextColor="Black" Clicked="OnSortClicked"/>
+                    <Button Text="🔍 Filter" BackgroundColor="LightGray" TextColor="Black" Clicked="OnFilterClicked"/>
+                </HorizontalStackLayout>
+
+                <!-- Grid de Documentos -->
+                <CollectionView ItemsSource="{Binding Documents}" SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeThickness="1"
+                                    Stroke="LightGray"
+                                    BackgroundColor="#EAF1FF"
+                                    Padding="10"
+                                    StrokeShape="RoundRectangle 10"
+                                    Margin="5">
+                                <VerticalStackLayout>
+                                    <Image Source="{Binding Image}" WidthRequest="80" HeightRequest="80" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Name}"
+                                           FontSize="14"
+                                           HorizontalOptions="Center"
+                                           FontAttributes="Bold"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botón flotante para subir documentos -->
+        <Button Text="+" 
+                BackgroundColor="Blue"
+                TextColor="White"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                Clicked="OnUploadClicked"
+                Grid.Row="0"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="20"/>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DocuManageUmad.Pages.WelcomePage"
+             BackgroundColor="White">
+    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+
+        <!-- Logo -->
+        <Image Source="logo.jpg" Aspect="AspectFit" HeightRequest="200" />
+
+        <!-- Paginador de puntos -->
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <BoxView Color="Blue" WidthRequest="8" HeightRequest="8" CornerRadius="4"/>
+            <BoxView Color="Gray" WidthRequest="8" HeightRequest="8" CornerRadius="4" Margin="4,0,0,0"/>
+            <BoxView Color="Gray" WidthRequest="8" HeightRequest="8" CornerRadius="4" Margin="4,0,0,0"/>
+        </HorizontalStackLayout>
+
+        <!-- Título -->
+        <Label Text="DocuManage" 
+               FontSize="24" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <!-- Descripción -->
+        <Label Text="Bienvenido a la plataforma de documentos y expedientes de la Universidad Madero."
+               FontSize="14"
+               TextColor="Gray"
+               HorizontalTextAlignment="Center"/>
+
+        <!-- Botón de Log In -->
+        <Button Text="Log In" 
+                BackgroundColor="Blue" 
+                TextColor="White"
+                CornerRadius="10"
+                Clicked="OnLoginClicked"
+                HorizontalOptions="Center"
+                WidthRequest="200"/>
+
+    </VerticalStackLayout>
+</ContentPage>

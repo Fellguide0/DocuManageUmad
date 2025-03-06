@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DocuManageUmad.Pages.LoginPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Logo -->
+            <Image Source="documanage_logo.png" Aspect="AspectFit" HeightRequest="150" />
+
+            <!-- Título -->
+            <Label Text="Iniciar Sesión"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+
+            <!-- Campo de Correo Electrónico -->
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Correo Electrónico"
+                   Keyboard="Email"
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+
+            <!-- Campo de Contraseña -->
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Contraseña"
+                       IsPassword="True"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"
+                       HorizontalOptions="FillAndExpand"/>
+                <ImageButton Source="eye_icon.png"
+                             WidthRequest="24"
+                             HeightRequest="24"
+                             Clicked="TogglePasswordVisibility"
+                             BackgroundColor="Transparent"/>
+            </StackLayout>
+
+            <!-- Botón de Iniciar Sesión -->
+            <Button Text="Ingresar"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Clicked="OnLoginClicked"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"/>
+
+            <!-- Enlace para registro -->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="¿No tienes cuenta?" TextColor="Gray" FontSize="14"/>
+                <Label Text=" Regístrate aquí" TextColor="Blue" FontSize="14">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
